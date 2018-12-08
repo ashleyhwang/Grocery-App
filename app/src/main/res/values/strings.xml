@@ -6,4 +6,8 @@
     <string name="no_search_term">Please enter a search term</string>
     <string name="no_network">Please check your network connection and try again.</string>
     <string name="no_results">No Results Found</string>
+    <string name="no_lists">No grocery list yet.</string>
+    <string name="app_header">Groceryfy</string>
+    <string name="recipe">Search Recipe</string>
+    <string name="grocery">Grocery Lists</string>
 </resources>

@@ -5,7 +5,7 @@
     android:layout_height="75dp"
     android:layout_margin="5dp"
     android:orientation="horizontal"
-    card_view:cardBackgroundColor="@color/DarkOrange"
+    card_view:cardBackgroundColor="@color/DarkSalmon"
     card_view:cardCornerRadius="5dp"
     card_view:cardUseCompatPadding="true">
 
