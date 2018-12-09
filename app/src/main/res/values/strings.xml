@@ -10,4 +10,8 @@
     <string name="app_header">Groceryfy</string>
     <string name="recipe">Search Recipe</string>
     <string name="grocery">Grocery Lists</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
 </resources>

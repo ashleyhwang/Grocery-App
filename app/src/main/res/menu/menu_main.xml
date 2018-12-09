@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.knatola.GroceryApp.MainActivity">
+
+    <item
+        android:id="@+id/action_save"
+        android:title="Save Lists"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_value"
+        android:title="Recipe Value"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        app:showAsAction="never"/>
+</menu>

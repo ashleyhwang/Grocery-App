@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".grocerylistTab" />
-        <activity android:name=".RecipeTab"></activity>
+        <activity android:name=".Recipe.RecipeTab" />
+        <activity android:name=".Recipe.recipeSearchActivity"></activity>
     </application>
 
 </manifest>

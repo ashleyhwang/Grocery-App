@@ -1,4 +1,4 @@
-package com.example.ashleyhwang.groceryfy;
+package com.example.ashleyhwang.groceryfy.DataModel;
 
 public class GroceryList {
 
