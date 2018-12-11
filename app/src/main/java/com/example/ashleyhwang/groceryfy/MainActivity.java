@@ -20,7 +20,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.ashleyhwang.groceryfy.DataModel.GroceryList;
@@ -29,16 +31,19 @@ import com.example.ashleyhwang.groceryfy.Recipe.RecipeTab;
 
 import java.util.ArrayList;
 
+import cz.msebera.android.httpclient.impl.execchain.MainClientExec;
+
 public class MainActivity extends AppCompatActivity {
     private static final String STR_URL = "http://192.168.0.100:8080/";
     private static final String LOG = "MainActivity:";
     private ViewPager mViewPager;
     private ArrayList<GroceryList> groceryLists;
-//    DatabaseHelper db;
+    DatabaseHelper db;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private android.support.v7.widget.Toolbar mToolbar;
     ArrayList<String> mListNames = new ArrayList<>();
+    private static final String TAG = "MainActivity";
 //    Client client;
     private boolean isLoggedIn = false;
 
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        db = new DatabaseHelper(getApplicationContext());
+        db = new DatabaseHelper(getApplicationContext());
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open,
                 R.string.close);
@@ -62,11 +67,19 @@ public class MainActivity extends AppCompatActivity {
 //        View v = mNav.getHeaderView(0);
 //        TextView mNavHeader = (TextView) v.findViewById(R.id.nav_header1);
 //        setSupportActionBar(mToolbar);
+
+        View mMapButton = findViewById(R.id.nav_mapbtn);
+
+        View logos= (ImageView) findViewById(R.id.nav_logo);
+//        View mMapMe = findViewById(R.id.nav_map);
         View mLoginButton = findViewById(R.id.nav_login);
         View mLogoutButton = findViewById(R.id.nav_logout);
         Button mSettingsBtn = (Button) findViewById(R.id.nav_settings);
+        Log.d(TAG, "onCreate: ");
         mLogoutButton.setVisibility(View.GONE);
         Bundle b = getIntent().getExtras();
+
+
         if(b != null){
             Log.d(LOG, "login_status: " + isLoggedIn);
             setLoggedIn(b.getBoolean("login_status"));
@@ -76,6 +89,14 @@ public class MainActivity extends AppCompatActivity {
 //                mNavHeader.setText(db.getAccount().getUserName());
             }
         }
+
+        mMapButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent mapIntent = new Intent(MainActivity.this, MapActivity.class) ;
+                startActivity(mapIntent);
+            }
+        });
 //
 //        mLoginButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -92,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(logout);
 //            }
 //        });
-
 //        mSettingsBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -103,30 +123,31 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
+
+
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
-        mToolbar.setNavigationIcon(R.drawable.nav_icon);
+        mToolbar.setNavigationIcon(R.drawable.nav_icon); //nav icon!!
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(LOG, "navigation icon click");
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
 
+
         groceryLists = new ArrayList<>();
-//        mListNames = db.getAllGroceryListNames();
+        mListNames = db.getAllGroceryListNames();
         for(String i: mListNames){
             GroceryList groceryList = new GroceryList(i);
             groceryLists.add(groceryList);
         }
 
 
-        // Create the adapter that will return a fragment for each of the two
-        // primary sections of the activity.
+        // controls two fragments (recipe and grocerylist)
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -138,11 +159,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onStop() {
-//        db.closeDB();
-//        super.onStop();
-//    }
+    @Override
+    protected void onStop() {
+        db.closeDB();
+        super.onStop();
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

@@ -23,7 +23,7 @@
             android:paddingTop="@dimen/appbar_padding_top"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-x            <android.support.v7.widget.Toolbar
+            <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -61,13 +61,14 @@ x            <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <Button
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:id="@+id/nav_login"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:text="Login"
+                android:text=""
                 android:layout_height="wrap_content" />
 
             <Button
@@ -86,25 +87,24 @@ x            <android.support.v7.widget.Toolbar
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:layout_below="@+id/nav_login"
-                android:id="@+id/nav_cloud"
+                android:id="@+id/nav_mapbtn"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:text="Cloud"
+                android:text="Find nearby groceryStore"
                 android:layout_height="wrap_content" />
 
             <Button
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
-                android:layout_below="@+id/nav_cloud"
+                android:layout_below="@+id/nav_mapbtn"
                 android:id="@+id/nav_settings"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:text="Settings"
+                android:text=""
                 android:layout_height="wrap_content" />
         </RelativeLayout>
 
     </android.support.design.widget.NavigationView>
-    <!-- Side navigation drawer UI -->
 
 
 </android.support.v4.widget.DrawerLayout>

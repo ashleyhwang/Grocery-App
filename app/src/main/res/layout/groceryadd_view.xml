@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:id="@+id/groceries"
+    android:animateLayoutChanges="true">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/plusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/plus"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="20dp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/removeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/plusButton"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/delete"
+        android:visibility="gone"
+        app:backgroundTint="#FF0040"
+        />
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:backgroundTint="@color/colorPrimary"
+            app:title="@string/app_name">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/noitems"
+        android:layout_marginTop="80dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbar"
+        android:orientation="vertical"
+        android:baselineAligned="false">
+
+        <ListView
+            android:id="@+id/groceryList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:ignore="RtlHardcoded"
+            android:layout_weight="1"
+            android:elevation="10dp"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/addItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/border"
+        android:elevation="10dp"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addPrice"
+            android:background="@drawable/main_button"
+            android:text="Add Item"
+            android:backgroundTint="@color/Beige"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/newGroceryItem"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
+            android:ems="5"
+            android:hint="@string/add_item"
+            android:inputType="textPersonName"
+            android:labelFor="@+id/newItem"
+            android:textColor="#000000"
+            android:textColorHint="#6E6E6E" />
+
+        <EditText
+            android:id="@+id/addAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
+            android:layout_below="@id/newGroceryItem"
+            android:ems="5"
+            android:layout_alignParentStart="true"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:hint="Amount"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#6E6E6E"
+            android:layout_toEndOf="@id/addPrice"/>
+
+        <EditText
+            android:id="@+id/addPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
+            android:ems="5"
+            android:hint="@string/price"
+            android:inputType="numberDecimal"
+            android:layout_below="@id/newGroceryItem"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:layout_marginBottom="1dp"
+            android:textColor="#000000"
+            android:textColorHint="#6E6E6E" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/clickView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="@drawable/transparent"
+        android:visibility="gone"
+        />
+</RelativeLayout>

@@ -3,6 +3,8 @@ package com.example.ashleyhwang.groceryfy.Recipe;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RecipeTab extends Fragment {
 
@@ -41,7 +44,8 @@ public class RecipeTab extends Fragment {
     private TextView loading;
     private ProgressBar progressBar;
     private FloatingActionButton fab;
-    private String dishname;
+    private String dishname ="";
+    DatabaseHelper db;
     View rootView;
     private Dialog mDialog = null;
 
@@ -110,13 +114,22 @@ public class RecipeTab extends Fragment {
     private void makeDialog(){
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     final EditText edtxt = new EditText(getContext());
-    builder.setMessage("Type the name of dish you want to look for!").setTitle("Search Recipe").setView(edtxt);
+    builder.setMessage("Type the name of dish you want to look for!").setTitle("Recipe Search").setView(edtxt).setIcon(R.mipmap.cart);
 
     // searching for a recipe
     builder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialogInterface, int i) {
             dishname = edtxt.getText().toString();
+            if(edtxt.getText()==null || edtxt.getText().toString().isEmpty()){
+                Toast.makeText(getContext(), "Please enter a dishname", Toast.LENGTH_SHORT).show();
+            } else {
+            Intent rec = new Intent(getContext(), recipeSearchActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("dish", dishname);
+            rec.putExtras(bundle);
+            getContext().startActivity(rec);
+            }
 
         }
     });

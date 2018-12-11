@@ -8,10 +8,17 @@
     <string name="no_results">No Results Found</string>
     <string name="no_lists">No grocery list yet.</string>
     <string name="app_header">Groceryfy</string>
-    <string name="recipe">Search Recipe</string>
+    <string name="Searchrecipe">Search Recipe</string>
     <string name="grocery">Grocery Lists</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="cancel">Cancel</string>
     <string name="search">Search</string>
+    <string name="recipe">Recipe</string>
+    <string name="recipeResult">Recipe Search Result</string>
+    <string name="recipeResultDesc">Click on the recipe you would like to explore!</string>
+    <string name="noitems">No items yet</string>
+    <string name="itemname">Item Name</string>
+    <string name="add_item">Add Item</string>
+    <string name="price">Price</string>
 </resources>
